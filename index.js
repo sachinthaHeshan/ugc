@@ -15,6 +15,7 @@ const config = {
     }
   }
 
+  
 const getData = (index) => {
     axios.get(`https://apphub.mobitel.lk/mobitelint/mapis/selectedstudent/api/student?index=${index}`, config)
     .then((data) => {
