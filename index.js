@@ -3,7 +3,7 @@ const jsonFile = 'data.json';
 const fs = require('fs');
 
 
-const startIndex = 1347235;
+const startIndex = 1347330;
 const endIndex = 1347339;
 const finalData = []
 let count = 0;
@@ -21,19 +21,18 @@ const getData = (index) => {
         count++;
 
         if(data.data.id != 0 && data.data.unicode=== "123P"){
-            console.log(data.data.indexNo, ' - ' ,data.data.fullName)
             finalData.push(data.data);
         }
 
         console.clear();
-        console.log(`Found (${finalData.length}) : `);
+        console.log('\x1b[36m%s\x1b[0m',`Found (${finalData.length}) : `);
 
-        finalData.forEach((finalDataOne)=>{
-            console.log('   ',finalDataOne.indexNo, ' - ' ,finalDataOne.fullName)
+        finalData.forEach((finalDataOne,index)=>{
+            console.log(`   [${index+1}] \x1b[35m%s\x1b[0m`, finalDataOne.indexNo, ' - ' ,finalDataOne.fullName)
         })
 
-        console.log('\n');
-        console.log(`Successfull (${count}) : `,index);
+        console.log();
+        console.log('\x1b[32m%s\x1b[0m', `Successfull (${count}) : `,startIndex,' - ',index); 
     })
     .finally(()=>{
         if(index==endIndex){
@@ -45,6 +44,7 @@ const getData = (index) => {
       
     })
 }
+
 
 getData(startIndex)
 
