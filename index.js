@@ -3,8 +3,8 @@ const jsonFile = 'data.json';
 const fs = require('fs');
 
 
-const startIndex = 1347330;
-const endIndex = 1347339;
+const startIndex = 1347310;
+const endIndex = 1347399;
 const finalData = []
 let count = 0;
 let index;
@@ -15,7 +15,7 @@ const config = {
     }
   }
 
-  
+
 const getData = (index) => {
     axios.get(`https://apphub.mobitel.lk/mobitelint/mapis/selectedstudent/api/student?index=${index}`, config)
     .then((data) => {
@@ -23,6 +23,7 @@ const getData = (index) => {
 
         if(data.data.id != 0 && data.data.unicode=== "123P"){
             finalData.push(data.data);
+            fs.writeFileSync(jsonFile, JSON.stringify(finalData,null,2)); 
         }
 
         console.clear();
